@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Fetch SonarQube project data
     steps:
+      - uses: actions/checkout@v2
       - name: Send request to api
         uses: pherms/github-action-pr-decoration
         inputs:

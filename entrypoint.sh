@@ -10,4 +10,4 @@ if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
 	fi
 fi
 
-curl --location  --header "Authorization: Basic ${INPUT_LOGIN}" -o ${GITHUB_WORKSPACE}/result.json --request GET ${INPUT_HOST}/api/measures/component?component=${INPUT_PROJECTKEY}&metricKeys=violations,bugs,code_smells,reliability_rating,security_rating,security_review_rating,sqale_rating,vulnerabilities,security_hotspots
+curl --location  --header "Authorization: Basic ${INPUT_LOGIN}" -o ${RUNNER_WORKSPACE}/result.json --request GET ${INPUT_HOST}/api/measures/component?component=${INPUT_PROJECTKEY}&metricKeys=violations,bugs,code_smells,reliability_rating,security_rating,security_review_rating,sqale_rating,vulnerabilities,security_hotspots

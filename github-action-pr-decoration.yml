@@ -9,8 +9,8 @@ jobs:
       - name: Send request to api
         uses: pherms/github-action-pr-decoration
         inputs:
-          host: https://sqplayground.xablu.com
-          projectKey: MyProjectKey
+          host: "https://sqplayground.xablu.com"
+          projectKey: "MyProjectKey"
           login: ${{secrets.SONARQUBE_TOKEN}}
       - name: Upload artefact
         uses: actions/upload-artifact@v2
@@ -28,8 +28,8 @@ jobs:
         with:
           name: result
           path: result.json
-      - name: Process file
-        uses: eddiejaoude/github-actions-reader-writer@v0.1
+      - name: json2table
+        uses: EddieHubCommunity/gh-actions-html-table-generator@v0.1.1
         with:
           json-file-path: 'result.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}

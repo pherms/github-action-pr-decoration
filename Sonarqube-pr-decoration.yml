@@ -1,0 +1,23 @@
+on: workflow_dispatch
+name: Sonarscanner and PR decoration
+jobs:
+  sonarscanner-pr-decoration:
+    runs-on: ubuntu-latest
+    name: Sonarscanner and PR decoration
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout source direcotry
+      - uses: highbyte/sonarscan-dotnet@2.0
+        name: SonarScanner for .NET 5 with pull request decoration support
+        with:
+          # The key of the SonarQube project
+          sonarProjectKey: testproject
+          # The name of the SonarQube project
+          sonarProjectName:  "testproject"
+          # The name and relative path of the solution file or project file
+          dotnetBuildArguments: ./src/PonApp.sln
+          # The SonarQube server URL. For SonarCloud, skip this setting.
+          sonarHostname:  https://sqplayground.xablu.com
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
